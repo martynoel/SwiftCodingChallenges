@@ -7,7 +7,7 @@ func sort(using unsortedArray: [Int], maxValue: Int) -> [Int] {
     var countArray = Array(repeating: 0, count: maxValue + 1)
     
     // Iterate through unsortedArray
-	// Tally up how many times the element appears
+	// Tally up how many times each element appears and put that at that element's index in countArray
     for element in unsortedArray {
         countArray[element] += 1
     }
@@ -19,10 +19,13 @@ func sort(using unsortedArray: [Int], maxValue: Int) -> [Int] {
     // For each element in countArray
     for (element, count) in countArray.enumerated() {
         
-        // Add number of times each element occurs to sortedArray
         for _ in 0..<count {
             
+			// Add number of times each element occurs to sortedArray
             sortedArray[currentSortedIndex] = element
+			
+			// Increment currentSortedIndex 
+			// IMPORTANT bc you need to sort duplicate values
             currentSortedIndex += 1
         }
     }
